@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#a8a8a8"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/field"
+        android:layout_weight="7"
+        style="@style/inflateview"
+        android:hint="Field here"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/percent"
+        android:layout_weight="20"
+        style="@style/inflateview"
+        android:hint="% here"
+        />
+
+</LinearLayout>

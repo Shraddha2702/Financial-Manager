@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="info.stakes.AskDailyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/tvdaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/etfield"
+                style="@style/EditTextactivity"
+                android:inputType="text"
+                android:layout_weight="5"
+                android:hint="Fields" />
+
+            <EditText
+                android:id="@+id/etamt"
+                style="@style/EditTextactivity"
+                android:inputType="number"
+                android:layout_weight="10"
+                android:hint="Amount" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnadddaily"
+            style="@style/singlebutton"
+            android:layout_gravity="center"
+            android:text="Add" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvdaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/btndone"
+            style="@style/singlebutton"
+            android:layout_gravity="center"
+            android:text="Done" />
+
+        <TextView
+            android:id="@+id/tvinflate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Text here"
+            android:textSize="30dp"
+            android:visibility="invisible" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlad"
+            android:visibility="invisible"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/circlerightdaily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circleright"/>
+
+            <ImageView
+                android:id="@+id/circleleftdaily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circleleft"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
