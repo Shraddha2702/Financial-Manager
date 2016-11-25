@@ -75,15 +75,11 @@
                         android:layout_weight="4"
                         style="@style/SmallButton" />
 
-                    <Button
-                        android:id="@+id/delete"
-                        android:text="Delete"
-                        android:layout_weight="4"
-                        style="@style/SmallButton"/>
 
                     <Button
                         android:id="@+id/deleteall"
                         android:text="Delete All"
+                        android:layout_marginLeft="20dp"
                         android:layout_weight="4"
                         style="@style/SmallButton"/>
                 </LinearLayout>

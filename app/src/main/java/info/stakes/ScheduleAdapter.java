@@ -1,6 +1,7 @@
 package info.stakes;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,24 +26,43 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
     ArrayList<ScheduleModel> ar;
     float sum;
 
+    @NonNull
+    private OnItemCheckListener onItemClick;
+
+    interface OnItemCheckListener {
+        void onItemCheck(ScheduleModel item);
+        void onItemUncheck(ScheduleModel item);
+    }
+
+
+
     //SharedPrefsSchedule ca = new SharedPrefsSchedule(c);
 
     public ScheduleAdapter() {
     }
 
-    public ScheduleAdapter(Context c, ArrayList<ScheduleModel> ar) {
+    public ScheduleAdapter(Context c, ArrayList<ScheduleModel> ar,@NonNull OnItemCheckListener onItemCheckListener) {
         this.c = c;
         this.ar = ar;
+        this.onItemClick = onItemCheckListener;
     }
+
 
     public class MainModelHolder extends RecyclerView.ViewHolder {
         TextView tv;
-        EditText te;
+        TextView te;
+        CheckBox check;
 
         public MainModelHolder(View itemView) {
             super(itemView);
             tv = (TextView)itemView.findViewById(R.id.onetext);
-            te = (EditText)itemView.findViewById(R.id.oneedit);
+            te = (TextView)itemView.findViewById(R.id.oneedit);
+            check = (CheckBox)itemView.findViewById(R.id.checkschedule);
+            check.setClickable(false);
+        }
+
+        public void setOnClickListener(View.OnClickListener onClickListener) {
+            itemView.setOnClickListener(onClickListener);
         }
     }
 
@@ -53,22 +74,31 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
     }
 
     @Override
-    public void onBindViewHolder(final MainModelHolder holder, int position) {
-        holder.tv.setText(ar.get(position).getField());
-        holder.te.setText(" "+ar.get(position).getPercent());
+    public void onBindViewHolder(final MainModelHolder holder, final int position) {
 
 
-        try {
-            //sum = ca.getAmount();
-            float amt = Float.parseFloat(holder.te.getText().toString());
-            sum = sum + amt;
-            int sum1 = (int)sum;
-           // ca.setAmount(sum1);
-            Log.d("Sum"," "+sum);
-        }
-        catch (NullPointerException e)
-        {
-            Log.d("Exception","e");
+        if (holder instanceof MainModelHolder) {
+
+            final ScheduleModel currentItem = ar.get(position);
+
+            holder.tv.setText(ar.get(position).getField());
+            holder.te.setText(" "+ar.get(position).getPercent());
+
+
+
+            ((MainModelHolder) holder).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((MainModelHolder) holder).check.setChecked(
+                            !((MainModelHolder) holder).check.isChecked());
+                    if (((MainModelHolder) holder).check.isChecked()) {
+                        onItemClick.onItemCheck(currentItem);
+                    } else {
+                        onItemClick.onItemUncheck(currentItem);
+                    }
+                }
+            });
         }
 
     }

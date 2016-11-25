@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -12,7 +13,7 @@ import android.util.Log;
  */
 public class DatabaseHelperDaily extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "DatabaseManagerDaily.db";
 
     //Table Name
@@ -102,6 +103,21 @@ public class DatabaseHelperDaily extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public boolean checkDatabase()
+    {
+        SQLiteDatabase checkdb = null;
+        String path = "/data/data/info.stakes/databases/"+DATABASE_NAME+"/";
+        try {
+            checkdb = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
+            checkdb.close();
+        }catch (SQLiteException e)
+        {
+            return false;
+        }
+        return true;
+    }
+
 
 }
 

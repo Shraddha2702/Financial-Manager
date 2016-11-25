@@ -14,33 +14,8 @@
         android:gravity="center"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Budget of the Day :"
-            android:layout_weight="5"/>
-
-        <EditText
-            android:id="@+id/mainbudgetschedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:hint="Budget"/>
 
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/scheduleconfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Confirm"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/schedulerecycle"
@@ -51,12 +26,35 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/schedulesum"
+    <Button
+        android:id="@+id/scheduleconfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total"
-        android:layout_marginTop="10dp"
-        android:textSize="30dp"
-        />
+        android:layout_gravity="center"
+        android:text="Confirm"/>
+
+
+    <TextView
+        android:id="@+id/totalhere"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total here"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/budgethere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Budget here"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/savingshere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Savings here"
+        android:visibility="gone"/>
+
+
 </LinearLayout>

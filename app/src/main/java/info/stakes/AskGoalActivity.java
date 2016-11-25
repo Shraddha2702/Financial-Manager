@@ -65,7 +65,7 @@ public class AskGoalActivity extends AppCompatActivity {
                     next.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent i=new Intent(AskGoalActivity.this,MainActivity.class);
+                            Intent i=new Intent(AskGoalActivity.this,AskBudgetActivity.class);
                             startActivity(i);
                             finish();
                         }
@@ -80,5 +80,10 @@ public class AskGoalActivity extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        getApplicationContext().deleteDatabase("DatabaseManager.db");
     }
 }

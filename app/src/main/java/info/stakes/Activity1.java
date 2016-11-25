@@ -51,7 +51,6 @@ public class Activity1 extends AppCompatActivity {
 
     Button add;
     Button deleteall;
-    Button delete;
 
     EditText percent;
     AutoCompleteTextView field;
@@ -90,7 +89,6 @@ public class Activity1 extends AppCompatActivity {
         add = (Button) findViewById(R.id.add);
         total = (TextView) findViewById(R.id.total);
         deleteall = (Button) findViewById(R.id.deleteall);
-        delete = (Button) findViewById(R.id.delete);
         done = (Button) findViewById(R.id.btn);
 
         db = new DatabaseHelperSchedule(getApplicationContext());
@@ -125,34 +123,27 @@ public class Activity1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    rl.setVisibility(View.INVISIBLE);
+                    //rl.setVisibility(View.INVISIBLE);
 
                     String s1 = field.getText().toString();
                     String s = percent.getText().toString();
                     int s2 = Integer.parseInt(s);
 
 
-                    Log.d("s2", " " + s2);
-                    Log.d("sum", " " + sum);
-
-
                     if (s2 < 100 && sum <= 100) {
 
-                        boolean inserted = db.insertschedule(s1, s2);
+                        boolean inserted = db.insertschedule(s1, s2, 0);
 
-                        if (inserted == true) {
+                        if (inserted) {
 
                             sum = sum + s2;
                             Float f = new Float(s2);
                             total.setText(" " + sum);
 
-                            Log.d("Added y", " " + f);
-                            Log.d("Added x", " " + s1);
+
                             yData1.add(f);
                             xData1.add(s1);
 
-                            Log.d("After y", "" + yData1);
-                            Log.d("After x", " " + xData1);
 
                             list.add(new MainModelactivity1(s1, s2));
 
@@ -164,9 +155,11 @@ public class Activity1 extends AppCompatActivity {
 
                             if (sum == 100) {
                                 add.setEnabled(false);
+                                done.setEnabled(true);
+                                deleteall.setEnabled(false);
                             }
 
-                            done.setEnabled(true);
+
                             adapter = new MainAdapteractivity1(getApplicationContext(), list);
                             rv.setAdapter(adapter);
                         } else {
@@ -189,7 +182,7 @@ public class Activity1 extends AppCompatActivity {
         });
 
 
-       /*deleteall.setOnClickListener(new View.OnClickListener() {
+       deleteall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list.clear();
@@ -197,12 +190,12 @@ public class Activity1 extends AppCompatActivity {
 
                 //s1=" ";
                 //s2=0;
-                //sum = 0;
+                sum = 0;
 
                 adapter=new MainAdapteractivity1(getApplicationContext(),list);
-               // adapter.removeV();
-                //rv.setAdapter(adapter);
-                //((ViewGroup)rv.getParent()).removeView(rv);
+               //adapter.removeV();
+                rv.setAdapter(adapter);
+                ((ViewGroup)rv.getParent()).removeView(rv);
 
                 Log.d("listall",""+list);
                 Log.d("sumall",""+sum);
@@ -211,19 +204,16 @@ public class Activity1 extends AppCompatActivity {
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
+
+        done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ll.removeViewAt(0);
-                add.setEnabled(true);
-                list.remove(0);
-
-
-                Log.d("listdelete1"," "+list);
-                Log.d("sumdelete1",""+sum);
-            Toast.makeText(getApplicationContext(),"Deleted the last Element",Toast.LENGTH_SHORT).show();
+                add.setEnabled(false);
+                deleteall.setEnabled(false);
             }
-        });*/
+        });
+
+
 
         Log.d("Outside Method", "" + yData1);
         Log.d("Outside Method", " " + xData1);
@@ -363,4 +353,9 @@ public class Activity1 extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        getApplicationContext().deleteDatabase("ScheduleDatabase.db");
+    }
 }

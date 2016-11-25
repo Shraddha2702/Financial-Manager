@@ -7,6 +7,7 @@ public class ScheduleModel {
 
     String Field;
     float percent;
+    int isSelected;
 
     public ScheduleModel() {
     }
@@ -14,6 +15,20 @@ public class ScheduleModel {
     public ScheduleModel(String field, float percent) {
         Field = field;
         this.percent = percent;
+    }
+
+    public ScheduleModel(String field, float percent, int isSelected) {
+        Field = field;
+        this.percent = percent;
+        this.isSelected = isSelected;
+    }
+
+    public int getIsSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(int isSelected) {
+        this.isSelected = isSelected;
     }
 
     public String getField() {

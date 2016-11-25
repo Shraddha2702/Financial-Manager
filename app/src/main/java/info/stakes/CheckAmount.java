@@ -1,7 +1,12 @@
 package info.stakes;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+/**
+ * Created by SHRADDHA on 10-10-2016.
+ */
+
+
+        import android.content.Context;
+        import android.content.SharedPreferences;
 
 /**
  * Created by SHRADDHA on 06-10-2016.
@@ -31,3 +36,4 @@ public class CheckAmount {
         edit.commit();
     }
 }
+

@@ -1,11 +1,13 @@
 package info.stakes;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,145 +25,257 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by SHRADDHA on 18-08-2016.
  */
 public class ScheduleFragment extends Fragment {
 
+
     RecyclerView rv;
-    RecyclerView.Adapter madap;
+    RecyclerView.Adapter ad;
+    ArrayList<ScheduleModel> sh = new ArrayList<>();
+    ArrayList<Float> sum = new ArrayList<>();
 
-    EditText budget;
-    Button confirmed;
-    TextView sumhere;
-    int flag = 0;
-
-    ArrayList<ScheduleModel> ar = new ArrayList<>();
-    ArrayList<Float> sum;
+    Button confirm;
+    TextView totalhere;
+    TextView budgethere;
+    TextView savingshere;
 
     DatabaseHelperSchedule db;
-    DatabaseHelperBudget dbbudget;
+    DatabaseHelperBudget dbb;
 
-    //ScheduleAdapter sh;
-    //CheckAmount ca = new CheckAmount(getActivity());
-    //SharedPrefsSchedule sh;
+    DatabaseHelperSavings ds;
+    float amoun;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_schedule, container, false);
 
-        budget = (EditText) v.findViewById(R.id.mainbudgetschedule);
-
-        sum = new ArrayList<>();
-        budget.setText("0");
-        confirmed = (Button) v.findViewById(R.id.scheduleconfirm);
-        sumhere = (TextView) v.findViewById(R.id.schedulesum);
 
         rv = (RecyclerView) v.findViewById(R.id.schedulerecycle);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        /*sh = new SharedPrefsSchedule(getActivity());
-        try {
-            int total = sh.getAmount();
-            sumhere.setText(""+total);
-        }catch (Exception e)
+
+        totalhere = (TextView)v.findViewById(R.id.totalhere);
+        budgethere = (TextView)v.findViewById(R.id.budgethere);
+        savingshere = (TextView)v.findViewById(R.id.savingshere);
+
+        ds = new DatabaseHelperSavings(getActivity());
+
+        confirm = (Button)v.findViewById(R.id.scheduleconfirm);
+
+        dbb = new DatabaseHelperBudget(getActivity());
+        Cursor cbud = dbb.getAllBudget();
+        cbud.moveToFirst();
+
+        final int budamt = cbud.getInt(0);
+        final int buddate = cbud.getInt(1);
+
+        Calendar cal = Calendar.getInstance();
+        final int pdate = cal.get(Calendar.DATE);
+
+        if(pdate == buddate)
         {
-            Log.d("FirstTime",""+e);
-        }*/
+            db = new DatabaseHelperSchedule(getActivity());
 
-        db = new DatabaseHelperSchedule(getActivity());
-
-        final Cursor res = db.getAllSch();
-
-        res.moveToFirst();
-
-
-        dbbudget = new DatabaseHelperBudget(getActivity());
-
-        Cursor c = dbbudget.getAllBudget();
-
-        Log.d("Cursorc", " " + c);
-
-        if (c.getCount() > 0) {
+            Cursor c = db.getAllSch();
             c.moveToFirst();
-            int s = c.getInt(0);
-            budget.setText("" + s);
 
-            while (!res.isAfterLast()) {
+            while (!c.isAfterLast()) {
+                String field = c.getString(0);
+                int Amount = c.getInt(1);
+                int updated = c.getInt(2);
+
+                if(updated == 0){
+                amoun = (Amount / 100.0f) * budamt;}
+                else {
+                    amoun = (float)Amount;
+                }
+                sh.add(new ScheduleModel(field, amoun));
+                sum.add(amoun);
 
 
-                String field = res.getString(0);
-                int x = res.getInt(1);
+                ad = new ScheduleAdapter(getActivity(), sh, new ScheduleAdapter.OnItemCheckListener() {
+                    @Override
+                    public void onItemCheck(final ScheduleModel item) {
 
-                Log.d("FieldSchedule", field);
-                Log.d("PercentSche", " " + x);
+                        final Dialog d = new Dialog(getActivity());
+                        d.setContentView(R.layout.update_schedule_bud);
+                        d.setTitle("Update Value");
+
+                        final String field = item.getField();
+                        final float Amount = item.getPercent();
 
 
-                float amt = (x / 100.0f) * s;
+                        final TextView pbudget = (TextView)d.findViewById(R.id.tvbudget);
+                        final TextView pfield = (TextView)d.findViewById(R.id.tvfield);
+                        final EditText et = (EditText) d.findViewById(R.id.etnewbud);
+                        Button b = (Button) d.findViewById(R.id.btnconfirm);
 
-                Log.d("Floatamt", " " + amt);
-                ar.add(new ScheduleModel(field, amt));
-                sum.add(amt);
+                        pbudget.setText(""+Amount);
+                        pfield.setText(field);
+                        d.show();
 
-                madap = new ScheduleAdapter(getActivity(), ar);
+                        b.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
-                rv.setAdapter(madap);
 
-                res.moveToNext();
+                                String f = et.getText().toString();
+                                float amt = Float.parseFloat(f);
+                                int amt1 = Integer.parseInt(f);
+
+                                boolean ch = db.UpdateSchedule(field, amt1,1);
+
+                                if (ch) {
+                                    Log.d("InsertinPopUp", " " + ch);
+                                }
+                                d.dismiss();
+                                Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+
+                    @Override
+                    public void onItemUncheck(ScheduleModel item) {
+
+                        final Dialog d = new Dialog(getActivity());
+                        d.setContentView(R.layout.update_schedule_bud);
+                        d.setTitle("Update Value");
+
+                        final String field = item.getField();
+                        final float Amount = item.getPercent();
+
+
+                        final TextView pbudget = (TextView)d.findViewById(R.id.tvbudget);
+                        final TextView pfield = (TextView)d.findViewById(R.id.tvfield);
+                        final EditText et = (EditText) d.findViewById(R.id.etnewbud);
+                        Button b = (Button) d.findViewById(R.id.btnconfirm);
+
+                        pbudget.setText(""+Amount);
+                        pfield.setText(field);
+                        d.show();
+
+                        b.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+
+                                String f = et.getText().toString();
+                                float amt = Float.parseFloat(f);
+                                int amt1 = Integer.parseInt(f);
+
+                                boolean ch = db.UpdateSchedule(field, amt1,1);
+
+                                if (ch) {
+                                    Log.d("InsertinPopUp", " " + ch);
+                                }
+                                d.dismiss();
+                                Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+
+                rv.setAdapter(ad);
+                c.moveToNext();
             }
-            db.close();
-            dbbudget.close();
 
-            float val = addall(sum);
-            sumhere.setText(""+val);
 
-        } else {
+        }
+        else
+        {
 
-            Toast.makeText(getActivity(), " Add Budget for the Day ", Toast.LENGTH_SHORT).show();
+
+            final Dialog d = new Dialog(getActivity());
+            d.setContentView(R.layout.update_budget_schedule);
+            d.setTitle("Update Budget");
+
+            final EditText et = (EditText) d.findViewById(R.id.budpop);
+            Button b = (Button) d.findViewById(R.id.budconfirm);
+            d.show();
+
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String f = et.getText().toString();
+                    int amt = Integer.parseInt(f);
+
+                    Calendar cal = Calendar.getInstance();
+                    int pdate = cal.get(Calendar.DATE);
+
+                    boolean ch = dbb.insertBudget(amt,pdate);
+
+                    if (ch) {
+                        Log.d("InsertinPopUp", " " + ch);
+                    }
+                    d.dismiss();
+                    Toast.makeText(getActivity(), "Not the same date", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
-
-        confirmed.setOnClickListener(new View.OnClickListener() {
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                float total = addall(sum);
 
-                //sh = new ScheduleAdapter();
-                //float sum = sh.PassSum();
-                String s = budget.getText().toString();
-                int amt = Integer.parseInt(s);
+                totalhere.setVisibility(View.VISIBLE);
+                budgethere.setVisibility(View.VISIBLE);
+                savingshere.setVisibility(View.VISIBLE);
 
-                dbbudget = new DatabaseHelperBudget(getActivity());
-                int check = dbbudget.UpdateBudget(amt);
+                totalhere.setText(""+total);
 
-                Log.d("CheckBudget", " " + check);
+                Cursor cb = dbb.getAllBudget();
+                cb.moveToFirst();
+                int budg = cb.getInt(0);
+                float budget = (float)budg;
 
-                if (check == 1) {
+                budgethere.setText(""+budget);
 
-                    flag = 1;
+                float save = budg -total;
 
-                    //sumhere.setText(""+sum);
-                    ar.removeAll(ar);
-                    madap.notifyDataSetChanged();
-                    rv.setAdapter(madap);
+                if(save >0.0)
+                {
+                    savingshere.setText("You saved "+save);
+                    float t = 0;
+                    float a =0;
 
-                    Toast.makeText(getActivity(), " Done Updation ", Toast.LENGTH_SHORT).show();
-                } else if (check == 2) {
-                    Toast.makeText(getActivity(), "Inserted ", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Not Inserted ", Toast.LENGTH_SHORT).show();
+                    Cursor c = ds.getAllSaving();
+                    c.moveToFirst();
+
+                    if(c.getCount() > 0) {
+                        if(pdate == buddate) {
+                            t = save;
+                        }
+                        else{
+                            a = c.getFloat(0);
+                            t = a + save;}
+                        ds.insertSaving(t);
+                    }else
+                    {
+                        ds.insertSaving(save);
+                    }
+
+                }else
+                {
+                    savingshere.setText("You wasted "+save);
                 }
-                dbbudget.close();
             }
         });
 
-        //int sum = ca.getAmount();
-        //sumhere.setText(""+sum);
-
         return v;
     }
+
+
 
     private float addall(ArrayList<Float> sum) {
         float total = 0;
@@ -174,5 +289,7 @@ public class ScheduleFragment extends Fragment {
 
     }
 
+
 }
+
 

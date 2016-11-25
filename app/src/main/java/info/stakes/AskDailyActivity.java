@@ -117,4 +117,10 @@ public class AskDailyActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        getApplicationContext().deleteDatabase("DatabaseManagerDaily.db");
+    }
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="info.stakes">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,9 +24,6 @@
             android:name=".AskDailyActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".RegisterPage_2"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
             android:name=".RegisterPage_1"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Activity1" />
@@ -32,7 +31,8 @@
             android:name=".LoginPage"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".Splash2" />
-        <activity android:name=".AskGoalActivity"></activity>
+        <activity android:name=".AskGoalActivity" />
+        <activity android:name=".AskBudgetActivity" />
     </application>
 
 </manifest>

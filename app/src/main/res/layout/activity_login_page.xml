@@ -35,12 +35,14 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/loginemail"
                 style="@style/EditText"
-                android:hint="UserName"
+                android:hint="Email"
                 android:drawableLeft="@drawable/male"
                 />
 
             <EditText
+                android:id="@+id/loginpassword"
                 style="@style/EditText"
                 android:hint="Password"
                 android:drawableLeft="@drawable/password"/>
@@ -52,13 +54,6 @@
                 android:textSize="20dp"
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Forgot Password ?"
-                android:textSize="15dp"/>
 
         </LinearLayout>
 

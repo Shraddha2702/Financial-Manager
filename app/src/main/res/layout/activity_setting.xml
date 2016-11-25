@@ -241,7 +241,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/setrate"
+                android:id="@+id/setLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff"

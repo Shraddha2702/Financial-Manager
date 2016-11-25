@@ -25,8 +25,10 @@ public class GoalFragment extends Fragment {
     TextView tv;
     TextView printgoal;
     TextView printamount;
+    TextView printsaving;
 
     DatabaseHelper db;
+    DatabaseHelperSavings ds;
 
     @Nullable
     @Override
@@ -36,9 +38,11 @@ public class GoalFragment extends Fragment {
         tv = (TextView) v.findViewById(R.id.tvgoalhere);
         printgoal = (TextView) v.findViewById(R.id.goalhereprint);
         printamount = (TextView) v.findViewById(R.id.goalamthereprint);
+        printsaving = (TextView)v.findViewById(R.id.printsavings);
 
 
         db = new DatabaseHelper(getActivity());
+        ds = new DatabaseHelperSavings(getActivity());
 
         Cursor res = db.getAllGoals();
 
@@ -48,6 +52,14 @@ public class GoalFragment extends Fragment {
 
             res.moveToLast();
 
+            Cursor c = ds.getAllSaving();
+            c.moveToFirst();
+
+            if(c.getCount() > 0 ){
+            float amt = c.getFloat(0);
+
+            printsaving.setText(""+amt);}
+
             printgoal.setText(res.getString(0));
             printamount.setText(" " + res.getInt(1));
 
@@ -55,6 +67,7 @@ public class GoalFragment extends Fragment {
             Log.d("restInt", " " + res.getInt(1));
             res.close();
             db.close();
+            ds.close();
         }
         return v;
 
