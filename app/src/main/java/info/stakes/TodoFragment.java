@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -91,6 +93,12 @@ public class TodoFragment extends Fragment {
                         }
                     }
 
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    TodoFragment sa = new TodoFragment();
+                    ft.replace(R.id.frame,sa);
+                    ft.commit();
+
                 }
 
                 public void onItemUncheck(DailyModel item) {
@@ -122,6 +130,13 @@ public class TodoFragment extends Fragment {
                             Log.d("Error", "error");
                         }
                     }
+
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    TodoFragment sa = new TodoFragment();
+                    ft.replace(R.id.frame,sa);
+                    ft.commit();
+
                 }
             });
             this.mRecyclerView.setAdapter(this.mAdapter);
@@ -168,6 +183,11 @@ public class TodoFragment extends Fragment {
                     }
 
                     d.dismiss();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    TodoFragment sa = new TodoFragment();
+                    ft.replace(R.id.frame,sa);
+                    ft.commit();
 
                 }
             });
@@ -209,6 +229,11 @@ public class TodoFragment extends Fragment {
                             Log.d("InsertinPopUp", " " + ch);
                         }
                         d.dismiss();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        TodoFragment sa = new TodoFragment();
+                        ft.replace(R.id.frame,sa);
+                        ft.commit();
 
                     }
                 });

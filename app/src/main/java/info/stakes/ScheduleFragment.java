@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.view.ViewPager;
@@ -136,6 +137,12 @@ public class ScheduleFragment extends Fragment {
                                     Log.d("InsertinPopUp", " " + ch);
                                 }
                                 d.dismiss();
+
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction ft = fm.beginTransaction();
+                                ScheduleFragment sa = new ScheduleFragment();
+                                ft.replace(R.id.frame,sa);
+                                ft.commit();
                                 Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -177,6 +184,11 @@ public class ScheduleFragment extends Fragment {
                                     Log.d("InsertinPopUp", " " + ch);
                                 }
                                 d.dismiss();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction ft = fm.beginTransaction();
+                                ScheduleFragment sa = new ScheduleFragment();
+                                ft.replace(R.id.frame,sa);
+                                ft.commit();
                                 Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -218,6 +230,11 @@ public class ScheduleFragment extends Fragment {
                         Log.d("InsertinPopUp", " " + ch);
                     }
                     d.dismiss();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ScheduleFragment sa = new ScheduleFragment();
+                    ft.replace(R.id.frame,sa);
+                    ft.commit();
                     Toast.makeText(getActivity(), "Not the same date", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -269,6 +286,12 @@ public class ScheduleFragment extends Fragment {
                 {
                     savingshere.setText("You wasted "+save);
                 }
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ScheduleFragment sa = new ScheduleFragment();
+                ft.replace(R.id.frame,sa);
+                ft.commit();
             }
         });
 

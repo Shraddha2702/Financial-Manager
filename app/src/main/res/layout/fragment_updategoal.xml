@@ -1,131 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Present Goal"
-        android:textSize="30dp"/>
-
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
+        <TextView
+            style="@style/Heading"
+            android:layout_marginBottom="0dp"
+            android:text="Present Goal"
+            android:textSize="35dp" />
 
         <LinearLayout
-            android:padding="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    style="@style/TextViewAll"
+                    android:text="Goal :"
+                    />
+
+                <TextView
+                    android:id="@+id/updfraggoalold"
+                    style="@style/SmallTextView"
+                    android:layout_marginLeft="5dp"
+                    android:text="Actual Goal" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    style="@style/TextViewAll"
+                    android:text="Amount :"
+                    />
+
+                <TextView
+                    android:id="@+id/updfragamtold"
+                    style="@style/SmallTextView"
+                    android:layout_marginLeft="5dp"
+                    android:text="Actual Amount" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/Heading"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="20dp"
+            android:text="Change Goal"
+            android:textSize="35dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/TextViewAll"
+                android:layout_weight="10"
                 android:text="Goal :"
-                android:textSize="20dp"/>
+                />
 
-            <TextView
-                android:id="@+id/updfraggoalold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Actual Goal"
+            <EditText
+                android:id="@+id/updfraggoalnew"
+                style="@style/EditTextactivity"
+                android:layout_weight="5"
+                android:layout_margin="0dp"
                 android:layout_marginLeft="5dp"
-                android:textSize="20dp"/>
+                android:hint="New Goal" />
+
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:padding="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TextViewAll"
                 android:text="Amount :"
-                android:textSize="20dp"/>
+                android:layout_weight="9"
+                 />
 
-            <TextView
-                android:id="@+id/updfragamtold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Actual Amount"
+            <EditText
+                android:id="@+id/updfragamtnew"
+                style="@style/EditTextactivity"
+                android:layout_weight="5"
+                android:layout_margin="0dp"
                 android:layout_marginLeft="5dp"
-                android:textSize="20dp"/>
+                android:hint="New Amount"
+                 />
+
 
         </LinearLayout>
-    </LinearLayout>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Change Goal"
-        android:textSize="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
-
-    <LinearLayout
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Goal :"
-            android:textSize="20dp"/>
-
-        <EditText
-            android:id="@+id/updfraggoalnew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="New Goal"
-            android:layout_marginLeft="5dp"
-            android:textSize="20dp"/>
-
+        <Button
+            android:id="@+id/btnupdategoal"
+            style="@style/singlebutton"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="Submit" />
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amount :"
-            android:textSize="20dp"/>
-
-        <EditText
-            android:id="@+id/updfragamtnew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="New Amount"
-            android:layout_marginLeft="5dp"
-            android:textSize="20dp"/>
-
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnupdategoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Submit"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
-
-</LinearLayout>
+</ScrollView>

@@ -17,10 +17,9 @@
 
         <TextView
             android:id="@+id/tvdaily"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Text here"
-            android:textSize="30dp" />
+            style="@style/Heading"
+            android:gravity="center"
+            android:text="Text here" />
 
         <LinearLayout
             android:layout_width="match_parent"

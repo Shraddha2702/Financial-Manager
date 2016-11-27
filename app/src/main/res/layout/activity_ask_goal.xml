@@ -12,11 +12,10 @@
 
     <TextView
         android:id="@+id/tvaskgoal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Heading"
         android:text="Text here"
-        android:textSize="30dp"
-        android:layout_marginBottom="50dp"/>
+        android:gravity="center"
+        />
 
     <EditText
         android:id="@+id/entergoal"
