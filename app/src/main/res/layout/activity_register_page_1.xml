@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/gridbackcicle">
 
 
 
@@ -39,26 +40,26 @@
 
         <EditText
             android:id="@+id/reguser"
-        style="@style/EditText"
+        style="@style/EditTextloginreg"
         android:hint="Username"
         android:drawableLeft="@drawable/male"/>
 
 
     <EditText
         android:id="@+id/regemail"
-        style="@style/EditText"
+        style="@style/EditTextloginreg"
         android:hint="Email"
         android:drawableLeft="@drawable/email"/>
 
     <EditText
         android:id="@+id/regpass"
-        style="@style/EditText"
+        style="@style/EditTextloginreg"
         android:hint="Password"
         android:drawableLeft="@drawable/password"/>
 
     <EditText
         android:id="@+id/regrepass"
-        style="@style/EditText"
+        style="@style/EditTextloginreg"
         android:hint="Confirm Password"
         android:drawableLeft="@drawable/checkpass"/>
 

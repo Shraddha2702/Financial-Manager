@@ -1,5 +1,41 @@
 <resources>
     <string name="app_name">stakes</string>
 
+    <color name="red">#F6BDB2</color>
+    <color name="skin">#F8E7E4</color>
+    <color name="white">#FCF6F5</color>
+    <color name="orange">#F5B56D</color>
+    <color name="yellow">#F1D87D</color>
+    <color name="green">#D1F17D</color>
+    <color name="blue">#7DF1E5</color>
+    <color name="dark_blue">#7DBCF1</color>
+    <color name="purple">#CD9EE9</color>
+    <color name="pink">#F8BBE5</color>
+    <color name="dark_pink">#F681AA</color>
+    <color name="chartreuse">#7FFF00</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="azure">#007FFF</color>
+    <color name="magenta">#FF00FF</color>
 
+    <array name="rainbow1">
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/dark_blue</item>
+        <item>@color/purple</item>
+        <item>@color/pink</item>
+        <item>@color/spring_green</item>
+        <item>@color/azure</item>
+        <item>@color/magenta</item>
+    </array>
+
+    <array name="rainbow2">
+        <item>@color/skin</item>
+        <item>@color/yellow</item>
+        <item>@color/white</item>
+        <item>@color/blue</item>
+        <item>@color/dark_pink</item>
+        <item>@color/chartreuse</item>
+        <item>@color/cyan</item>
+    </array>
 </resources>

@@ -8,7 +8,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gridbackcspiral">
 
     <TextView
         style="@style/Heading"
@@ -33,8 +34,6 @@
         android:id="@+id/btnaddDaily"
        style="@style/singlebutton"
         android:layout_margin="5dp"
-        android:text="Add"
-        android:background="#00796B"
-        />
+        android:text="Add" />
 
 </LinearLayout>

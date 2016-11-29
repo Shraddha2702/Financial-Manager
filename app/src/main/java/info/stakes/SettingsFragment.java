@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -25,9 +26,9 @@ import java.util.Calendar;
 public class SettingsFragment extends Fragment {
 
 
-    RelativeLayout changegoal;
-    RelativeLayout setProfile;
-    RelativeLayout logout;
+    LinearLayout changegoal;
+    LinearLayout setProfile;
+    LinearLayout logout;
 
     Session session;
 
@@ -37,9 +38,9 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.activity_setting,container,false);
 
-        changegoal= (RelativeLayout) v.findViewById(R.id.setgoal);
-        setProfile = (RelativeLayout) v.findViewById(R.id.setprofile);
-        logout = (RelativeLayout) v.findViewById(R.id.setLogout);
+        changegoal= (LinearLayout) v.findViewById(R.id.setgoal);
+        setProfile = (LinearLayout) v.findViewById(R.id.setprofile);
+        logout = (LinearLayout) v.findViewById(R.id.setLogout);
 
         session = new Session(getActivity());
 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/light">
+    android:background="@drawable/gridback">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/money"
-            app:siBorderWidth="5dp"
+            app:siBorderWidth="3dp"
             app:siBorderAlpha="10.0"
             app:siBorderColor="#000000"
             android:layout_gravity="center_horizontal"
@@ -36,14 +36,14 @@
 
             <EditText
                 android:id="@+id/loginemail"
-                style="@style/EditText"
+                style="@style/EditTextloginreg"
                 android:hint="Email"
                 android:drawableLeft="@drawable/male"
                 />
 
             <EditText
                 android:id="@+id/loginpassword"
-                style="@style/EditText"
+                style="@style/EditTextloginreg"
                 android:hint="Password"
                 android:drawableLeft="@drawable/password"/>
 

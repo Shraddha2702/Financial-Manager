@@ -2,7 +2,9 @@ package info.stakes;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by SHRADDHA on 25-09-2016.
@@ -42,6 +45,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MainModelHolde
         TextView field;
         TextView amount;
         CheckBox check;
+        CardView todo;
 
         public MainModelHolder(View itemView) {
 
@@ -50,6 +54,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MainModelHolde
             amount = (TextView)itemView.findViewById(R.id.tvAmountdaily);
             check = (CheckBox)itemView.findViewById(R.id.chkSelected);
             check.setClickable(false);
+            todo = (CardView)itemView.findViewById(R.id.cardviewtodo);
         }
 
         public void setOnClickListener(View.OnClickListener onClickListener) {
@@ -74,6 +79,10 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MainModelHolde
 
             holder.field.setText(arrays.get(position).getField());
             holder.amount.setText(Integer.toString(arrays.get(position).getAmount()));
+
+            String[] array = context.getResources().getStringArray(R.array.rainbow1);
+            String randomStr = array[new Random().nextInt(array.length)];
+            holder.todo.setCardBackgroundColor(Color.parseColor(randomStr));
 
             int ce = arrays.get(position).isSelected();
             boolean check;

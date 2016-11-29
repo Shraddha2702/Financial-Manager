@@ -1,8 +1,10 @@
 package info.stakes;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by SHRADDHA on 02-10-2016.
@@ -52,6 +55,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
         TextView tv;
         TextView te;
         CheckBox check;
+        CardView schedule;
 
         public MainModelHolder(View itemView) {
             super(itemView);
@@ -59,6 +63,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
             te = (TextView)itemView.findViewById(R.id.oneedit);
             check = (CheckBox)itemView.findViewById(R.id.checkschedule);
             check.setClickable(false);
+            schedule = (CardView)itemView.findViewById(R.id.cardviewschedule);
         }
 
         public void setOnClickListener(View.OnClickListener onClickListener) {
@@ -83,6 +88,10 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
 
             holder.tv.setText(ar.get(position).getField());
             holder.te.setText(" "+ar.get(position).getPercent());
+
+            String[] array = c.getResources().getStringArray(R.array.rainbow2);
+            String randomStr = array[new Random().nextInt(array.length)];
+            holder.schedule.setCardBackgroundColor(Color.parseColor(randomStr));
 
 
 

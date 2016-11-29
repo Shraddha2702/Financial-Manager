@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
+    android:id="@+id/cardviewschedule"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
+    android:layout_margin="10dp"
     card_view:cardCornerRadius="5dp"
     card_view:cardUseCompatPadding="true">
 

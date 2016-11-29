@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -45,7 +46,7 @@ public class TodoFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
         currentSelectedItems = new ArrayList<>();
         sumlist = new ArrayList<>();

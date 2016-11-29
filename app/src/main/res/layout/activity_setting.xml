@@ -2,281 +2,237 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="#000000">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/setpictop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/male"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/setnametop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/setpictop"
-                android:layout_marginTop="5dp"
-                android:text="Name of the User"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Profile"
-            android:textSize="30dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#000" />
+        android:weightSum="6">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_weight="2">
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/setprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="#ff0000">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/userpro1" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Edit Profile"
-                    android:textSize="20dp" />
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Profile"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
+                <TextView
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click here to change the Profile settings of the user"/>
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/setgoal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="@color/colorAccent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/goal2" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Update Goal"
-                    android:textSize="20dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
-            <RelativeLayout
-                android:id="@+id/setmonthly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Goal"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Update Monthly Fields"
-                    android:textSize="20dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
-            <RelativeLayout
-                android:id="@+id/setdaily"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Update Daily Fields"
-                    android:textSize="20dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
-
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click here to Update the Goals you want to achieve "/>
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:text="About Us"
-            android:textSize="30dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#000" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_weight="2">
 
-            <RelativeLayout
-                android:id="@+id/setcontact"
+            <LinearLayout
+                android:id="@+id/setmonthly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="#ffff00">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/monthly" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Contact Us"
-                    android:textSize="20dp" />
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Monthly"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
+                <TextView
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click here to update your Monthly Fields used for reference"/>
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
-
-            <RelativeLayout
-                android:id="@+id/setLogout"
+            <LinearLayout
+                android:id="@+id/setdaily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:padding="10dp">
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="#ff00ff">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/phone" />
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/goal1" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Log Out"
-                    android:textSize="20dp" />
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Daily"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000" />
-
+                <TextView
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click here to update the Daily fields used for reference"/>
+            </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="2">
 
+            <LinearLayout
+                android:id="@+id/setcontact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="#ffffff">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/contact" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
+
+                <TextView
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Contact Us"/>
+
+                <TextView
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click to Contact Us"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/setLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:padding="15dp"
+                android:background="#f0ff">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/logout" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#000000"/>
+
+                <TextView
+                    style="@style/TextViewAll"
+                    android:layout_marginBottom="0dp"
+                    android:text="Log Out"/>
+
+                <TextView
+                    style="@style/SmallTextView"
+                    android:layout_marginBottom="0dp"
+                    android:textSize="15dp"
+                    android:text="Click to Log Out"/>
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
 
