@@ -8,8 +8,7 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:layout_margin="10dp"
-    card_view:cardCornerRadius="5dp"
-    card_view:cardUseCompatPadding="true">
+    card_view:cardCornerRadius="5dp">
 
     <LinearLayout
         android:padding="5dp"

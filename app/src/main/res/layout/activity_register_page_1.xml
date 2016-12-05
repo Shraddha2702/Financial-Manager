@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
-    android:background="@drawable/gridbackcicle">
+    android:background="@drawable/gridback">
 
 
 
@@ -42,6 +42,7 @@
             android:id="@+id/reguser"
         style="@style/EditTextloginreg"
         android:hint="Username"
+            android:inputType="textPersonName"
         android:drawableLeft="@drawable/male"/>
 
 
@@ -49,18 +50,21 @@
         android:id="@+id/regemail"
         style="@style/EditTextloginreg"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:drawableLeft="@drawable/email"/>
 
     <EditText
         android:id="@+id/regpass"
         style="@style/EditTextloginreg"
         android:hint="Password"
+        android:inputType="textPassword"
         android:drawableLeft="@drawable/password"/>
 
     <EditText
         android:id="@+id/regrepass"
         style="@style/EditTextloginreg"
         android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:drawableLeft="@drawable/checkpass"/>
 
 

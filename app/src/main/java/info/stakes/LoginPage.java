@@ -41,35 +41,43 @@ public class LoginPage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uname = user.getText().toString();
-                String pswd = password.getText().toString();
 
-                int flag = 0;
+                try {
+                    String uname = user.getText().toString();
+                    String pswd = password.getText().toString();
 
-                Cursor c = db.getAllUsers();
-                c.moveToFirst();
+                    int flag = 0;
 
-                while (!c.isAfterLast())
-                {
-                    String uname1 = c.getString(1);
-                    String pswd1 = c.getString(2);
+                    Cursor c = db.getAllUsers();
+                    c.moveToFirst();
 
-                    if(uname.equals(uname1) && pswd.equals(pswd1))
+                    while (!c.isAfterLast())
                     {
-                        flag = 1;
-                        Log.d("Login","Login Successful Match found");
+                        String uname1 = c.getString(1);
+                        String pswd1 = c.getString(2);
 
-                        Intent i = new Intent(LoginPage.this,Activity1.class);
-                        startActivity(i);
-                        finish();
-                        break;
+                        if(uname.equals(uname1) && pswd.equals(pswd1))
+                        {
+                            flag = 1;
+                            Log.d("Login","Login Successful Match found");
+
+                            Intent i = new Intent(LoginPage.this,Activity1.class);
+                            startActivity(i);
+                            finish();
+                            break;
+                        }
                     }
+
+                    if(flag == 0)
+                    {
+                        Toast.makeText(getApplicationContext(),"Enter Correct Details or Register below !",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Enter your Details first ",Toast.LENGTH_SHORT).show();
                 }
 
-                if(flag == 0)
-                {
-                    Toast.makeText(getApplicationContext(),"Enter Correct Details",Toast.LENGTH_LONG).show();
-                }
+
             }
         });
 

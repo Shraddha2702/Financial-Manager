@@ -62,6 +62,7 @@ public class UpdateGoalFragment extends Fragment {
         goalupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
                 String ngoal = newgoal.getText().toString();
                 String a= newamt.getText().toString();
                 int namt = Integer.parseInt(a);
@@ -80,6 +81,8 @@ public class UpdateGoalFragment extends Fragment {
                 else
                 {
                     Toast.makeText(getContext(),"Not Updated",Toast.LENGTH_LONG).show();
+                }}catch (Exception e){
+                    Toast.makeText(getActivity(),"Enter some values",Toast.LENGTH_SHORT).show();
                 }
             }
         });

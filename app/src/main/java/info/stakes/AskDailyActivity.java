@@ -73,24 +73,29 @@ public class AskDailyActivity extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fie = field.getText().toString();
-                String a = amt.getText().toString();
-                int amt1 = Integer.parseInt(a);
+                try {
+                    String fie = field.getText().toString();
+                    String a = amt.getText().toString();
+                    int amt1 = Integer.parseInt(a);
 
 
-                boolean insert = db.insertdaily(fie, amt1,0);
+                    boolean insert = db.insertdaily(fie, amt1, 0);
 
-                if (insert == true) {
-                    sum = sum + amt1;
-                    Toast.makeText(getApplicationContext(), "Inserted Successfully ", Toast.LENGTH_LONG).show();
-                    arrayName.add(new MainModelDaily(fie, amt1));
-                    rvAdapter = new MainAdapterDaily(getApplicationContext(), arrayName);
-                    rvMain.setAdapter(rvAdapter);
+                    if (insert == true) {
+                        sum = sum + amt1;
+                        btndone.setEnabled(true);
+                        //Toast.makeText(getApplicationContext(), "Inserted Successfully ", Toast.LENGTH_LONG).show();
+                        arrayName.add(new MainModelDaily(fie, amt1));
+                        rvAdapter = new MainAdapterDaily(getApplicationContext(), arrayName);
+                        rvMain.setAdapter(rvAdapter);
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Can't Insert, Duplication ! ", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Can't enter the same values again, Duplication not allowed ! ", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Enter some fields and amount",Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });

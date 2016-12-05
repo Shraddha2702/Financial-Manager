@@ -73,7 +73,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
 
     @Override
     public MainModelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.one_view_schedule,null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.one_view_schedule,parent,false);
         ScheduleAdapter.MainModelHolder mmh = new MainModelHolder(v);
         return mmh;
     }
@@ -89,10 +89,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MainMo
             holder.tv.setText(ar.get(position).getField());
             holder.te.setText(" "+ar.get(position).getPercent());
 
-            String[] array = c.getResources().getStringArray(R.array.rainbow2);
-            String randomStr = array[new Random().nextInt(array.length)];
-            holder.schedule.setCardBackgroundColor(Color.parseColor(randomStr));
 
+            try {
+                Random rand = new Random();
+                //String[] array = c.getResources().getStringArray(R.array.rainbow2);
+                String[] array = {"#F8E7E4","#F1D87D","#FCF6F5","#7DF1E5","#F681AA","#7FFF00","#00FFFF"};
+                int value = rand.nextInt(array.length);
+                String randomStr = array[value];
+                holder.schedule.setCardBackgroundColor(Color.parseColor(randomStr));
+            }catch (Exception e){
+                Log.d("Exception color","color");
+            }
 
 
             ((MainModelHolder) holder).setOnClickListener(new View.OnClickListener() {

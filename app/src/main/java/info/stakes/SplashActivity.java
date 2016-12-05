@@ -2,6 +2,7 @@ package info.stakes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,34 +28,40 @@ public class SplashActivity extends AppCompatActivity {
         dbg = new DatabaseHelper(getApplicationContext());
         dbb = new DatabaseHelperBudget(getApplicationContext());
 
+        final Cursor cs = dbs.getAllSch();
+        final Cursor cd = dbd.getAllDaily();
+        final Cursor cg = dbg.getAllGoals();
+        final Cursor cb = dbb.getAllBudget();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 session = new Session(getApplicationContext());
 
-                if(session.getLoggedIn().equals(true) && dbs.checkDatabase() && dbd.checkDatabase() && dbg.checkDatabase() && dbb.checkDatabase())
+                if(session.getLoggedIn().equals(true) && (cs != null) && (cd != null) && (cg != null) && (cb != null))
                 {
                     Intent i = new Intent(SplashActivity.this,MainActivity.class);
                     overridePendingTransition(R.anim.slide_out_up, R.anim.slide_in_up);
                     startActivity(i);
+                    finish();
                 }
 
-                else if(session.getLoggedIn().equals(true) && !dbs.checkDatabase())
+                else if(session.getLoggedIn().equals(true) && (cs == null))
                 {
                     Intent i = new Intent(SplashActivity.this, Activity1.class);
                     startActivity(i);
                      finish();
                 }
 
-                else if(session.getLoggedIn().equals(true) && dbs.checkDatabase() && !dbd.checkDatabase())
+                else if(session.getLoggedIn().equals(true) && (cs != null) && (cd == null))
                 {
                     Intent i = new Intent(SplashActivity.this, AskDailyActivity.class);
                     startActivity(i);
                     finish();
                 }
 
-                else if(session.getLoggedIn().equals(true) && dbs.checkDatabase() && dbd.checkDatabase() && !dbg.checkDatabase())
+                else if(session.getLoggedIn().equals(true) && (cs != null) && (cd != null) && (cg == null))
                 {
                     Intent i = new Intent(SplashActivity.this, AskGoalActivity.class);
                     startActivity(i);
@@ -65,8 +72,9 @@ public class SplashActivity extends AppCompatActivity {
                     Intent i = new Intent(SplashActivity.this,LoginPage.class);
                     overridePendingTransition(R.anim.slide_out_up, R.anim.slide_in_up);
                     startActivity(i);
+                    finish();
                 }
-                finish();
+
             }
 
         },SPLASH_TIME_OUT);

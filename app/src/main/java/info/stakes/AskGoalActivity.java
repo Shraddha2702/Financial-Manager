@@ -50,30 +50,32 @@ public class AskGoalActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rl.setVisibility(View.VISIBLE);
+                try {
+                    String goalmain = goaltext.getText().toString();
+                    String am = amount.getText().toString();
+                    int amountmain = Integer.parseInt(am);
 
-                String goalmain=goaltext.getText().toString();
-                String am=amount.getText().toString();
-                int amountmain=Integer.parseInt(am);
+                    rl.setVisibility(View.VISIBLE);
 
-                boolean isInserted = db.insertgoal(goalmain,amountmain);
+                    boolean isInserted = db.insertgoal(goalmain, amountmain);
 
-                if(isInserted == true )
+                    if (isInserted == true) {
+                        //Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(AskGoalActivity.this, AskBudgetActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Enter again, Database Error !", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e)
                 {
-                    Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-
-                    next.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i=new Intent(AskGoalActivity.this,AskBudgetActivity.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    });
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Error in Inserting",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Enter a proper Goal and Amount",Toast.LENGTH_SHORT).show();
                 }
 
             }

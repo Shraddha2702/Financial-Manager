@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,9 +81,16 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MainModelHolde
             holder.field.setText(arrays.get(position).getField());
             holder.amount.setText(Integer.toString(arrays.get(position).getAmount()));
 
-            String[] array = context.getResources().getStringArray(R.array.rainbow1);
-            String randomStr = array[new Random().nextInt(array.length)];
-            holder.todo.setCardBackgroundColor(Color.parseColor(randomStr));
+            try
+            {
+                Random rand = new Random();
+            String[] array = {"#F6BDB2","#F5B56D","#7DBCF1","#CD9EE9","#F8BBE5","#00FF7F","#007FFF","#FF00FF"};
+                int value = rand.nextInt(array.length);
+            String randomStr = array[value];
+            holder.todo.setCardBackgroundColor(Color.parseColor(randomStr));}
+            catch (Exception e){
+                Log.d("Todo exception color","color");
+            }
 
             int ce = arrays.get(position).isSelected();
             boolean check;

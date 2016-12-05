@@ -29,6 +29,9 @@ public class SettingsFragment extends Fragment {
     LinearLayout changegoal;
     LinearLayout setProfile;
     LinearLayout logout;
+    LinearLayout setcontact;
+    LinearLayout setmonthly;
+    LinearLayout setdaily;
 
     Session session;
 
@@ -41,9 +44,35 @@ public class SettingsFragment extends Fragment {
         changegoal= (LinearLayout) v.findViewById(R.id.setgoal);
         setProfile = (LinearLayout) v.findViewById(R.id.setprofile);
         logout = (LinearLayout) v.findViewById(R.id.setLogout);
+        setcontact = (LinearLayout) v.findViewById(R.id.setcontact);
+        setmonthly = (LinearLayout) v.findViewById(R.id.setmonthly);
+        setdaily = (LinearLayout) v.findViewById(R.id.setdaily);
 
         session = new Session(getActivity());
 
+
+
+        setmonthly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                SetMonthlyStatsFragment sm = new SetMonthlyStatsFragment();
+                ft.replace(R.id.frame,sm);
+                ft.commit();
+            }
+        });
+
+        setdaily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                SetScheduleStatsFragment ss = new SetScheduleStatsFragment();
+                ft.replace(R.id.frame, ss);
+                ft.commit();
+            }
+        });
 
 
         changegoal.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +99,17 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        setcontact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+
+                ContactUsFragment cu = new ContactUsFragment();
+                ft.replace(R.id.frame, cu);
+                ft.commit();
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +131,7 @@ public class SettingsFragment extends Fragment {
                         getActivity().deleteDatabase("DatabaseManagerDaily.db");
                         getActivity().deleteDatabase("Savings.db");
                         getActivity().deleteDatabase("ScheduleDatabase.db");
-                        getActivity().deleteDatabase("DatabaseManagerUser.db");
+                        //getActivity().deleteDatabase("DatabaseManagerUser.db");
 
                         d.dismiss();
 

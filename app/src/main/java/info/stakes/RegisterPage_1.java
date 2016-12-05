@@ -44,34 +44,34 @@ public class RegisterPage_1 extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = user.getText().toString();
-                String mail = email.getText().toString();
-                String password = pswd.getText().toString();
-                String repassword = cpswd.getText().toString();
+                try {
+                    String name = user.getText().toString();
+                    String mail = email.getText().toString();
+                    String password = pswd.getText().toString();
+                    String repassword = cpswd.getText().toString();
 
-                if(password.equals(repassword))
-                {
-                    boolean insert = db.insertUser(name,mail,password);
+                    if (password.equals(repassword)) {
+                        boolean insert = db.insertUser(name, mail, password);
 
-                    if(insert)
-                    {
-                        Log.d("RegisterUser","User Registered Successfully !");
-                        userinfo.setUsername(name);
-                        userinfo.setEmail(mail);
-                        userinfo.setPassword(password);
+                        if (insert) {
+                            Log.d("RegisterUser", "User Registered Successfully !");
+                            userinfo.setUsername(name);
+                            userinfo.setEmail(mail);
+                            userinfo.setPassword(password);
 
-                        session.setLoggedIn(true);
+                            session.setLoggedIn(true);
 
-                        Intent i=new Intent(RegisterPage_1.this,Activity1.class);
-                        startActivity(i);
-                        finish();
+                            Intent i = new Intent(RegisterPage_1.this, Activity1.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Not Inserted", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please Enter same password in both fields !", Toast.LENGTH_LONG).show();
                     }
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(),"Not Inserted",Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),"Please Enter same password in both fields !",Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Enter Data first ",Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -19,7 +19,7 @@
             android:id="@+id/tvgoalhere"
             style="@style/Heading"
             android:gravity="center"
-            android:text="Current Goal"
+            android:text="Goal Tracker"
             android:textSize="50dp" />
 
 

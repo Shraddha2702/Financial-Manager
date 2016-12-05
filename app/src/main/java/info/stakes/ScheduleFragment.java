@@ -44,6 +44,7 @@ public class ScheduleFragment extends Fragment {
     TextView totalhere;
     TextView budgethere;
     TextView savingshere;
+    TextView head;
 
     DatabaseHelperSchedule db;
     DatabaseHelperBudget dbb;
@@ -56,6 +57,7 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_schedule, container, false);
 
+        head = (TextView) v.findViewById(R.id.heading);
 
         rv = (RecyclerView) v.findViewById(R.id.schedulerecycle);
         rv.setHasFixedSize(true);
@@ -79,6 +81,14 @@ public class ScheduleFragment extends Fragment {
 
         Calendar cal = Calendar.getInstance();
         final int pdate = cal.get(Calendar.DATE);
+
+        //db = new DatabaseHelperSchedule(getActivity());
+        //Cursor c = db.getAllSch();
+        //c.moveToFirst();
+
+        //String field = c.getString(0);
+        //head.setText(field);
+
 
         if(pdate == buddate)
         {
@@ -125,25 +135,29 @@ public class ScheduleFragment extends Fragment {
                         b.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                try
 
+                                {
+                                    String f = et.getText().toString();
+                                    float amt = Float.parseFloat(f);
+                                    int amt1 = Integer.parseInt(f);
 
-                                String f = et.getText().toString();
-                                float amt = Float.parseFloat(f);
-                                int amt1 = Integer.parseInt(f);
+                                    boolean ch = db.UpdateSchedule(field, amt1, 1);
 
-                                boolean ch = db.UpdateSchedule(field, amt1,1);
+                                    if (ch) {
+                                        Log.d("InsertinPopUp", " " + ch);
+                                    }
+                                    d.dismiss();
 
-                                if (ch) {
-                                    Log.d("InsertinPopUp", " " + ch);
+                                    FragmentManager fm = getFragmentManager();
+                                    FragmentTransaction ft = fm.beginTransaction();
+                                    ScheduleFragment sa = new ScheduleFragment();
+                                    ft.replace(R.id.frame, sa);
+                                    ft.commit();
+                                    Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
+                                }catch (Exception e){
+                                    Toast.makeText(getActivity(),"Enter amount first",Toast.LENGTH_SHORT).show();
                                 }
-                                d.dismiss();
-
-                                FragmentManager fm = getFragmentManager();
-                                FragmentTransaction ft = fm.beginTransaction();
-                                ScheduleFragment sa = new ScheduleFragment();
-                                ft.replace(R.id.frame,sa);
-                                ft.commit();
-                                Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -172,7 +186,7 @@ public class ScheduleFragment extends Fragment {
                         b.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
+                                try{
 
                                 String f = et.getText().toString();
                                 float amt = Float.parseFloat(f);
@@ -190,6 +204,9 @@ public class ScheduleFragment extends Fragment {
                                 ft.replace(R.id.frame,sa);
                                 ft.commit();
                                 Toast.makeText(getActivity(), "Updated ! ", Toast.LENGTH_SHORT).show();
+                            }catch (Exception e)
+                                {
+                                Toast.makeText(getActivity(),"Enter some value",Toast.LENGTH_SHORT).show();}
                             }
                         });
 
@@ -217,7 +234,8 @@ public class ScheduleFragment extends Fragment {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    try
+                    {
                     String f = et.getText().toString();
                     int amt = Integer.parseInt(f);
 
@@ -236,6 +254,8 @@ public class ScheduleFragment extends Fragment {
                     ft.replace(R.id.frame,sa);
                     ft.commit();
                     Toast.makeText(getActivity(), "Not the same date", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(getActivity(),"Enter new Budget amount ",Toast.LENGTH_SHORT).show();}
                 }
             });
         }
@@ -249,14 +269,14 @@ public class ScheduleFragment extends Fragment {
                 budgethere.setVisibility(View.VISIBLE);
                 savingshere.setVisibility(View.VISIBLE);
 
-                totalhere.setText(""+total);
+                totalhere.setText("Your Total amount is : "+total);
 
                 Cursor cb = dbb.getAllBudget();
                 cb.moveToFirst();
                 int budg = cb.getInt(0);
                 float budget = (float)budg;
 
-                budgethere.setText(""+budget);
+                budgethere.setText("Your Budget is : "+budget);
 
                 float save = budg -total;
 
@@ -287,11 +307,7 @@ public class ScheduleFragment extends Fragment {
                     savingshere.setText("You wasted "+save);
                 }
 
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ScheduleFragment sa = new ScheduleFragment();
-                ft.replace(R.id.frame,sa);
-                ft.commit();
+
             }
         });
 

@@ -4,6 +4,7 @@
     android:id="@+id/myCoordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backpopup"
     tools:context="info.stakes.MainActivity">
 
     <android.support.v4.widget.NestedScrollView

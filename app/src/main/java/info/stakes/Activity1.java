@@ -164,12 +164,12 @@ public class Activity1 extends AppCompatActivity {
                             rv.setAdapter(adapter);
                         } else {
 
-                            Toast.makeText(getApplicationContext(), "Can't Insert, Duplication ! ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "You can't enter duplicate values", Toast.LENGTH_SHORT).show();
                         }
 
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Issue with Sum or Number! ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Issue with Sum or Number! ", Toast.LENGTH_SHORT).show();
                     }
 
 

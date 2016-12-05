@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:padding="10dp"
     android:elevation="20dp"
-    android:layout_margin="10dp"
+    android:layout_margin="20dp"
     card_view:cardCornerRadius="8dp"
     card_view:cardUseCompatPadding="true" >
 
