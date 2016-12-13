@@ -31,6 +31,7 @@ public class LoginPage extends AppCompatActivity {
         user = (EditText)findViewById(R.id.loginemail);
         password = (EditText)findViewById(R.id.loginpassword);
         db = new DatabaseHelperUser(getApplicationContext());
+        final Cursor c = db.getAllUsers();
 
         session = new Session(getApplicationContext());
 
@@ -48,7 +49,7 @@ public class LoginPage extends AppCompatActivity {
 
                     int flag = 0;
 
-                    Cursor c = db.getAllUsers();
+
                     c.moveToFirst();
 
                     while (!c.isAfterLast())
@@ -61,10 +62,15 @@ public class LoginPage extends AppCompatActivity {
                             flag = 1;
                             Log.d("Login","Login Successful Match found");
 
+                            session.setLoggedIn(true);
                             Intent i = new Intent(LoginPage.this,Activity1.class);
                             startActivity(i);
                             finish();
                             break;
+                        }
+                        else
+                        {
+                            Log.d("match","notfound");
                         }
                     }
 

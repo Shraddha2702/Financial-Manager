@@ -85,4 +85,11 @@ public class MainActivity extends AppCompatActivity {
         unread=bottomBar.makeBadgeForTabAt(2,"#FF0000",13);
         unread.show();*/
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        bottomBar.onSaveInstanceState(outState);
+    }
 }

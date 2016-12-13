@@ -20,6 +20,8 @@
             android:id="@+id/onetext"
             style="@style/TextViewAll"
             android:text="Field"
+            android:textSize="30dp"
+            android:background="@drawable/cardviewback"
             android:layout_marginBottom="0dp"
             android:layout_weight="10"
             />
@@ -28,6 +30,7 @@
             android:id="@+id/oneedit"
             style="@style/TextViewAll"
             android:layout_weight="20"
+            android:background="@drawable/cardviewback"
             android:layout_marginBottom="0dp"
             android:layout_gravity="end"
             android:hint="budget"/>

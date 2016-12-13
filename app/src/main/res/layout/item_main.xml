@@ -7,14 +7,14 @@
 
     <TextView
         android:id="@+id/field"
-        android:layout_weight="7"
+        android:layout_weight="5"
         style="@style/inflateview"
         android:hint="Field here"
         android:gravity="center" />
 
     <TextView
         android:id="@+id/percent"
-        android:layout_weight="20"
+        android:layout_weight="10"
         style="@style/inflateview"
         android:hint="% here"
         />
