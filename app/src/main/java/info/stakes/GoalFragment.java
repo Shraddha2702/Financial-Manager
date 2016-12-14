@@ -28,7 +28,6 @@ import java.util.List;
  */
 public class GoalFragment extends Fragment {
 
-    TextView tv;
     TextView printgoal;
     TextView printamount;
     TextView printsaving;
@@ -42,7 +41,6 @@ public class GoalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_goal, container, false);
 
-        tv = (TextView) v.findViewById(R.id.tvgoalhere);
         printgoal = (TextView) v.findViewById(R.id.goalhereprint);
         printamount = (TextView) v.findViewById(R.id.goalamthereprint);
         printsaving = (TextView) v.findViewById(R.id.printsavings);

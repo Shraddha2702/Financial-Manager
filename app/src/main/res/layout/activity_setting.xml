@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:background="#ff0000"
+                android:background="#008080"
                 android:orientation="vertical"
                 android:padding="15dp">
 
@@ -152,7 +152,7 @@
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:text="Click here to see your Daily Statistics"
+                    android:text="Click here to see your Daily Statistics Graph "
                     android:textSize="15dp" />
             </LinearLayout>
 
