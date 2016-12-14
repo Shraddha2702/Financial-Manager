@@ -94,12 +94,17 @@ public class Activity1 extends AppCompatActivity {
         db = new DatabaseHelperSchedule(getApplicationContext());
 
         //TextView Adapter
-        String array[] = {"Entertainment", "Travelling", "Food", "Household Works", "Sectional"};
+        String array[] = {"Entertainment", "Travelling", "Food", "Household Works", "Sectional","Transportation","Eating",
+        "Service Taxes","Movies","Friends","Malls","Shopping","Jewellery","Makeup","Vegetables","Petrol","Diesel","CNG",
+        "Maintainence","Water Facilities","Water","Boyfriend","Girlfriend","Parents","Mom","Dad","Brother","Sister",
+                "Family","Cousin/s","Sports","Games","Cricket","Football","Volleyball","Hotels","Restaurants","Eatables",
+        "Refreshments","Outings","Cleaning","NightOuts","Sleepovers","Parties","Others"};
         ArrayAdapter<String> adapt;
 
-        tv.setText("Hey Guys, Here you need to enter the fields where you spend your money" +
-                "on regular basis, also you need to specify the % of your expenditure on" +
-                "that particular place ! ");
+        tv.setText("Hey Guys, Here you need to enter the categories where you spend your money" +
+                "on REGULAR BASIS (like everyday), also you need to specify the approximate percent(%) of your expenditure on" +
+                "that particular field ! Once you enter just click on the add button. Enter categories until you " +
+                "the percentage value reaches 100%. ");
 
         rv = (RecyclerView) findViewById(R.id.rv);
         llm = new LinearLayoutManager(Activity1.this);
@@ -205,14 +210,6 @@ public class Activity1 extends AppCompatActivity {
         });
 
 
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                add.setEnabled(false);
-                deleteall.setEnabled(false);
-            }
-        });
-
 
 
         Log.d("Outside Method", "" + yData1);
@@ -225,6 +222,10 @@ public class Activity1 extends AppCompatActivity {
             done.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    add.setEnabled(false);
+                    deleteall.setEnabled(false);
+                    done.setEnabled(false);
 
                     Log.d("Inside Method", "" + yData1);
                     Log.d("Inside Method", " " + xData1);

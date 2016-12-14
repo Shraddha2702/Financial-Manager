@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class TodoFragment extends Fragment {
     public RecyclerView.Adapter mAdapter;
     public RecyclerView mRecyclerView;
     public List<Integer> sumlist;
+    ImageView iv;
 
     CheckAmount ca;
     int flag = 0;
@@ -51,6 +53,24 @@ public class TodoFragment extends Fragment {
         currentSelectedItems = new ArrayList<>();
         sumlist = new ArrayList<>();
         lists = new ArrayList<>();
+        iv = (ImageView)v.findViewById(R.id.ivdo);
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog d = new Dialog(getActivity());
+                d.setContentView(R.layout.help_todo);
+                d.setTitle("Monthly Tracker Info");
+                d.show();
+                Button b = (Button) d.findViewById(R.id.bdt);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        d.dismiss();
+                    }
+                });
+            }
+        });
 
         ca = new CheckAmount(getActivity());
 

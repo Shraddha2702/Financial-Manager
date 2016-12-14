@@ -54,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-                else if((cs.getCount() == 0) && (cd.getCount() == 0) && (cg.getCount() == 0) && (cb.getCount() == 0)){
+                else if(session.getLoggedIn().equals(false) && (cs.getCount() == 0) && (cd.getCount() == 0) && (cg.getCount() == 0) && (cb.getCount() == 0)){
                     Intent i = new Intent(SplashActivity.this,LoginPage.class);
                     overridePendingTransition(R.anim.slide_out_up, R.anim.slide_in_up);
                     startActivity(i);

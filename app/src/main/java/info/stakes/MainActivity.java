@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomBar.mapColorForTab(0,"#66ee22");
-        bottomBar.mapColorForTab(1,"#66ee22");
-        bottomBar.mapColorForTab(2,"#66ee22");
-        bottomBar.mapColorForTab(3,"#66ee22");
+        bottomBar.mapColorForTab(0,"#3b5998");
+        bottomBar.mapColorForTab(1,"#3b5998");
+        bottomBar.mapColorForTab(2,"#3b5998");
+        bottomBar.mapColorForTab(3,"#3b5998");
 
-        bottomBar.setActiveTabColor("#66ee22");
+        bottomBar.setActiveTabColor("#3b5998");
         /* BottomBarBadge unread;
         unread=bottomBar.makeBadgeForTabAt(2,"#FF0000",13);
         unread.show();*/

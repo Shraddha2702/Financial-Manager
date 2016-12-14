@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,8 @@ public class ScheduleFragment extends Fragment {
     ArrayList<ScheduleModel> sh = new ArrayList<>();
     ArrayList<Float> sum = new ArrayList<>();
 
+    ImageView iv;
+
     Button confirm;
     TextView totalhere;
     TextView budgethere;
@@ -58,6 +61,24 @@ public class ScheduleFragment extends Fragment {
         View v = inflater.inflate(R.layout.activity_schedule, container, false);
 
         head = (TextView) v.findViewById(R.id.heading);
+        iv = (ImageView)v.findViewById(R.id.ivsc);
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog d = new Dialog(getActivity());
+                d.setContentView(R.layout.help_schedule);
+                d.setTitle("Daily Schedule Info");
+                d.show();
+                Button b = (Button) d.findViewById(R.id.bds);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        d.dismiss();
+                    }
+                });
+            }
+        });
 
         rv = (RecyclerView) v.findViewById(R.id.schedulerecycle);
         rv.setHasFixedSize(true);

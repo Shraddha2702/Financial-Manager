@@ -17,6 +17,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            style="@style/TextViewAll"
+            android:text="Daily Expenses"
+            android:textSize="35dp"
+            />
+
 
         <TextView
             android:id="@+id/tv"
@@ -112,10 +118,15 @@
             android:layout_marginTop="15dp"
             android:layout_gravity="center"/>
 
+        <TextView
+            android:layout_marginTop="20dp"
+            style="@style/Heading"
+            android:text="Once you click on Done, a graph would be shown of your selected categories. Click next arrow to continue.." />
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="4dp"

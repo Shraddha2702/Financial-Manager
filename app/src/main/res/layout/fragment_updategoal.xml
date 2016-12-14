@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gridback"
+    android:background="@drawable/backpopup"
     android:padding="10dp">
 
     <LinearLayout
@@ -73,6 +73,11 @@
             android:text="Change Goal"
             android:textSize="35dp" />
 
+        <TextView
+            style="@style/SmallTextView"
+            android:text="Enter your new goal and amount below and click on Submit."
+            android:gravity="left"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,6 +132,15 @@
             android:layout_marginTop="20dp"
             android:padding="10dp"
             android:text="Submit" />
+
+        <TextView
+            android:id="@+id/backup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Click to go back..."
+            android:textSize="25dp"
+            android:gravity="center"/>
 
     </LinearLayout>
 </ScrollView>

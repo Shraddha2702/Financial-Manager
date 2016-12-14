@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,14 +60,29 @@ public class AskDailyActivity extends AppCompatActivity {
 
         lower = (TextView) findViewById(R.id.tvinflate);
         upper = (TextView) findViewById(R.id.tvdaily);
-        upper.setText("There are things where you need to invest every month without any options like" +
+        upper.setText("There are things where you need to invest on MONTHLY BASIS, without any options, like" +
                 "Rents, Loans, Electricity Bills, etc. Above you need to add all such fields, and hit ADD" +
                 "to keep a track of all such activities.");
+
+        String array[] = {"Entertainment", "Travelling", "Food", "Household Works", "Sectional","Transportation","Eating",
+                "Service Taxes","Movies","Friends","Milk","Fruits","Malls","Shopping","Jewellery","Makeup","Vegetables","Petrol","Diesel","CNG",
+                "Maintainence","Water Facilities","Water","Boyfriend","Girlfriend","Parents","Mom","Dad","Brother","Sister",
+                "Family","Cousin/s","Sports","Games","Cricket","Football","Volleyball","Hotels","Restaurants","Eatables",
+                "Refreshments","Outings","Cleaning","NightOuts","Sleepovers","Parties","Others","Loans","Car Loan","House Loan",
+                "Bike Loan","Holidays","Rents","House Rent","Bills","Credit Card Bills","Debit Card Bills","Insurance","Corruption",
+                "Taxes","Interests","Shoes","Electricity Bills","Toll tax","Car Maintainence","Tution fees"};
+        ArrayAdapter<String> adapt;
 
         field = (AutoCompleteTextView) findViewById(R.id.etfield);
         amt = (EditText) findViewById(R.id.etamt);
         btnadd = (Button) findViewById(R.id.btnadddaily);
         btndone = (Button) findViewById(R.id.btndone);
+
+        adapt = new ArrayAdapter<String>(AskDailyActivity.this,
+                android.R.layout.simple_list_item_1, array);
+
+        field.setAdapter(adapt);
+
 
         db = new DatabaseHelperDaily(getApplicationContext());
 

@@ -12,9 +12,15 @@
     tools:context="info.stakes.AskGoalActivity">
 
     <TextView
+        style="@style/TextViewAll"
+        android:text="Set Goal"
+        android:textSize="35dp"
+        />
+
+    <TextView
         android:id="@+id/tvaskgoal"
         style="@style/Heading"
-        android:text="Text here"
+        android:text="Enter the goal/wish you want to achieve in the near future and the amount of that particular goal. Stakes helps you keep a track of your goals and an efficient way to get to it."
         android:gravity="center"
         />
 

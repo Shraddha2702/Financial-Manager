@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +29,24 @@ public class UpdateGoalFragment extends Fragment {
     EditText newamt;
     Button goalupdate;
 
-
+    TextView tv;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_updategoal, container, false);
 
+        tv = (TextView)v.findViewById(R.id.backup);
 
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                SettingsFragment ss = new SettingsFragment();
+                ft.replace(R.id.frame, ss);
+                ft.commit();
+            }
+        });
 
         db= new DatabaseHelper(getActivity());
 

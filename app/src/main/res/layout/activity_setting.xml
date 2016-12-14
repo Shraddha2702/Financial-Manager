@@ -14,17 +14,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/setprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="#ff0000">
+                android:background="#ff0000"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -36,28 +36,28 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Profile"/>
+                    android:text="Profile" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click here to change the Profile settings of the user"/>
+                    android:text="Click here to change the Profile settings of the user"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/setgoal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="@color/colorAccent">
+                android:background="@color/colorAccent"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -69,35 +69,35 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Goal"/>
+                    android:text="Goal" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click here to Update the Goals you want to achieve "/>
+                    android:text="Click here to Update the Goals you want to achieve "
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/setmonthly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="#F5B56D">
+                android:background="#C85A17"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -109,28 +109,28 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Monthly"/>
+                    android:text="Monthly" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click here to see your Monthly Statistics"/>
+                    android:text="Click here to see your Monthly Statistics"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/setdaily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="#ff00ff">
+                android:background="#A74AC7"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -142,18 +142,18 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Schedule"/>
+                    android:text="Schedule" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click here to see your Daily Statistics"/>
+                    android:text="Click here to see your Daily Statistics"
+                    android:textSize="15dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -161,17 +161,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/setcontact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="#7DBCF1">
+                android:background="#808000"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -183,28 +183,28 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Contact Us"/>
+                    android:text="Contact Us" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click to Contact Us"/>
+                    android:text="Click to Contact Us"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/setLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="5"
-                android:padding="15dp"
-                android:background="#f0ff">
+                android:background="#808080"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -216,18 +216,18 @@
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <TextView
                     style="@style/TextViewAll"
                     android:layout_marginBottom="0dp"
-                    android:text="Log Out"/>
+                    android:text="Log Out" />
 
                 <TextView
                     style="@style/SmallTextView"
                     android:layout_marginBottom="0dp"
-                    android:textSize="15dp"
-                    android:text="Click to Log Out"/>
+                    android:text="Click to Log Out"
+                    android:textSize="15dp" />
             </LinearLayout>
 
         </LinearLayout>

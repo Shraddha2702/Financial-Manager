@@ -31,13 +31,9 @@ public class LoginPage extends AppCompatActivity {
         user = (EditText)findViewById(R.id.loginemail);
         password = (EditText)findViewById(R.id.loginpassword);
         db = new DatabaseHelperUser(getApplicationContext());
-        final Cursor c = db.getAllUsers();
+
 
         session = new Session(getApplicationContext());
-
-        /*Typeface custom_font = Typeface.createFromAsset(getAssets(), "Quando-Regular.ttf");
-        login.setTypeface(custom_font);
-        });*/
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +44,7 @@ public class LoginPage extends AppCompatActivity {
                     String pswd = password.getText().toString();
 
                     int flag = 0;
-
+                    Cursor c = db.getAllUsers();
 
                     c.moveToFirst();
 
@@ -57,7 +53,7 @@ public class LoginPage extends AppCompatActivity {
                         String uname1 = c.getString(1);
                         String pswd1 = c.getString(2);
 
-                        if(uname.equals(uname1) && pswd.equals(pswd1))
+                        if(uname1.equals(uname) && pswd1.equals(pswd))
                         {
                             flag = 1;
                             Log.d("Login","Login Successful Match found");
@@ -70,8 +66,9 @@ public class LoginPage extends AppCompatActivity {
                         }
                         else
                         {
-                            Log.d("match","notfound");
+                            Log.d("match","not found");
                         }
+                        c.moveToNext();
                     }
 
                     if(flag == 0)
